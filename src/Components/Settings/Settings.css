@@ -1,0 +1,85 @@
+@keyframes slideRightAndFade {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+}
+
+@keyframes rotate {
+    from{
+        rotate: 0;
+    }
+    to{
+        rotate: 180deg;
+    }
+}
+
+button{
+    all: unset
+}
+.dropdown-content, .dropdown-subcontent{
+    min-width: 220px;
+    background-color: var(--dropdownBgcColor);
+    border-radius: 6px;
+    padding: 5px;
+    box-shadow: 0px 10px 38px -10px rgba(22, 23, 24, 0.35), 0px 10px 20px -15px rgba(22, 23, 24, 0.2);
+    animation-duration: 400ms;
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+    animation-name: slideRightAndFade;
+    position: relative;
+    /* display: flex;
+    flex-direction: column;
+    gap: 1rem; */
+}
+
+.dropdown-subtrigger, .dropdown-item{
+    font-size: 13px;
+    line-height: 1;
+    color: var(--headerColor);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    height: 25px;
+    padding: 5px 5px;
+    position: relative;
+    padding-left: 0px;
+    user-select: none;
+    outline: none;
+    gap: 1rem;
+}
+
+.dropdown-subtrigger[data-state='open'] {
+    background-color:var(--dropdownSubTriggerColor);
+    color: var(--headerColor);
+}
+
+
+.dropdown-subtrigger:hover, .dropdown-item:hover{
+    color: var(--textColor);
+    background-color: var(--headerColor);
+}
+
+.dropdown-button{
+    cursor: pointer;
+    transform: translateY(0.2rem);
+}
+
+.dropdown-item{
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0.5rem;
+}
+
+.dropdown-item-img{
+    height: 150%;
+}
+
+.dropdown-button[data-state='open'] > *{
+    animation-name: rotate;
+    animation-duration: 1s;
+}
