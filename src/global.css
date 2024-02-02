@@ -5,15 +5,36 @@
 
 :root{
     /* Dark theme */
+
     --appColor: #000000;
     --textColor: white;
+    --headerTextColor: white;
     --headerColor: #1D1D3A;
+    --headerColor2: #1D1D3A;
     --dropdownBgcColor: white;
     --dropdownSubTriggerColor: #BAA7FF;
-    
+    --pageTitleBgcColor: #194AFE;
+    --pageTitleBgcColor2: #194AFE;
     /* ========================================== */
 
     /* Light theme */
+
+    [data-theme='light']{
+        --appColor: #FDFDFD;
+        --textColor: black;
+        --headerTextColor: white;
+        --dropdownSubTriggerColor: #BAA7FF;
+        --dropdownBgcColor: #FDFDFD;
+        --headerColor: #F67593;
+        --headerColor2: #8E66D1;
+        --pageTitleBgcColor: #F67593;
+        --pageTitleBgcColor2: #8E66D1;
+    }
+
+    
+
+
+
 }
 
 body{

@@ -7,9 +7,73 @@ import LaptopSvg from '../../Assets/Svg/Laptop-svg';
 import EN from '../../Assets/Images/us.png'
 import PT from '../../Assets/Images/br.png'
 import './Settings.css'
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+import { useEffect, useState } from 'react';
+import CheckSvg from '../../Assets/Svg/Check-svg';
 
 export default function Settings(){
 
+    const [themeDefinition, setThemeDefinition] = useState(localStorage.getItem('@theme'))
+    const [langDefinition, setLangDefinition] = useState(localStorage.getItem('@language'))
+    // var themeDefinition = localStorage.getItem('@theme')
+
+    const {t} = useTranslation()
+
+    const changeLanguage = (lng:string) =>{
+        localStorage.setItem('@language', lng)
+        setLangDefinition(lng)
+        i18next.changeLanguage(lng)
+    }
+
+
+    useEffect(()=>{
+        const theme = localStorage.getItem('@theme')
+        const language = localStorage.getItem('@language')
+
+        if(theme == null){
+            localStorage.setItem('@theme', 'dark')
+        }else{
+            changeTheme(theme)
+        }
+
+        if(language == null){
+            localStorage.setItem('@language', 'pt')
+        }else{
+            changeLanguage(language)
+        }
+    },[])
+
+    function changeTheme(theme:string){
+        if (theme == 'dark' || theme == 'light'){
+            localStorage.setItem('@theme', theme)
+            setThemeDefinition(theme)
+        }
+
+        if (theme === 'system'){
+            localStorage.setItem('@theme', theme)
+            setThemeDefinition(theme)
+            if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+                theme = 'dark'
+            }else{
+                theme = 'light'
+            }
+
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e =>{
+                changeTheme(e.matches ? 'darkS' : 'lightS')
+            })
+        }
+
+        if(theme == 'darkS'){
+            theme = 'dark'
+        }
+
+        if(theme == 'lightS'){
+            theme = 'light'
+        }
+
+        document.querySelector('body')?.setAttribute('data-theme', theme)
+    }
 
     return(
         <div >
@@ -25,26 +89,29 @@ export default function Settings(){
                         <DropdownMenu.Sub>
                             <DropdownMenu.SubTrigger className='dropdown-subtrigger'>
                                 <ChevronSvg/>
-                                <h3 >Tema</h3>
+                                <h3 >{t('settings.tema')}</h3>
                             </DropdownMenu.SubTrigger>
                             <DropdownMenu.Portal>
                                 <DropdownMenu.SubContent className='dropdown-subcontent'sideOffset={2} alignOffset={-5} >
-                                    <DropdownMenu.Item className='dropdown-item'>
+                                    <DropdownMenu.Item className='dropdown-item' onClick={() => changeTheme('dark')}>
                                         <>
                                         <MoonSvg/>
-                                        <span>Escuro</span>
+                                        <span>{t('settings.escuro')}</span>
+                                        <CheckSvg  className='dropdown-check' style={themeDefinition == 'dark' || themeDefinition == null ? {display: 'block'} : {display: 'none'}}/>
                                         </>
                                     </DropdownMenu.Item>
-                                    <DropdownMenu.Item className='dropdown-item'>
+                                    <DropdownMenu.Item className='dropdown-item' onClick={() => changeTheme('light')}>
                                         <>
                                         <SunSvg/>
-                                        <span>Claro</span>
+                                        <span>{t('settings.claro')}</span>
+                                        <CheckSvg className='dropdown-check'  style={themeDefinition == 'light' ? {display: 'block'} : {display: 'none'}}/>
                                         </>
                                     </DropdownMenu.Item>
-                                    <DropdownMenu.Item className='dropdown-item'>
+                                    <DropdownMenu.Item className='dropdown-item' onClick={() => changeTheme('system')}>
                                         <>
                                         <LaptopSvg/>
-                                        <span>Sistema</span>
+                                        <span>{t('settings.sistema')}</span>
+                                        <CheckSvg className='dropdown-check'  style={themeDefinition == 'system' ? {display: 'block'} : {display: 'none'}}/>
                                         </>
                                     </DropdownMenu.Item>
                                 </DropdownMenu.SubContent>
@@ -53,20 +120,22 @@ export default function Settings(){
                         <DropdownMenu.Sub>
                             <DropdownMenu.SubTrigger className='dropdown-subtrigger'>
                                 <ChevronSvg/>
-                                <h3 >Idioma</h3>
+                                <h3 >{t('settings.idioma')}</h3>
                             </DropdownMenu.SubTrigger>
                             <DropdownMenu.Portal>
                                 <DropdownMenu.SubContent className='dropdown-subcontent'sideOffset={2} alignOffset={-5}>
-                                    <DropdownMenu.Item className='dropdown-item '>
+                                    <DropdownMenu.Item className='dropdown-item ' onClick={() => changeLanguage('pt')}>
                                         <>
                                         <img src={PT} className='dropdown-item-img'/>
-                                        <span>Português</span>
+                                        <span>{t('settings.pt')}</span>
+                                        <CheckSvg className='dropdown-check' style={langDefinition == 'pt' ? {display: 'block'} : {display: 'none'}}/>
                                         </>
                                     </DropdownMenu.Item>
-                                    <DropdownMenu.Item className='dropdown-item '>
+                                    <DropdownMenu.Item className='dropdown-item ' onClick={() => changeLanguage('en')}>
                                         <>
-                                        <img src={EN} className='dropdown-item-img'/>
-                                        <span>Inglês</span>
+                                        <img src={EN} className='dropdown-item-img' />
+                                        <span>{t('settings.en')}</span>
+                                        <CheckSvg className='dropdown-check' style={langDefinition == 'en' ? {display: 'block'} : {display: 'none'}}/>
                                         </>
                                     </DropdownMenu.Item>
                                 </DropdownMenu.SubContent>

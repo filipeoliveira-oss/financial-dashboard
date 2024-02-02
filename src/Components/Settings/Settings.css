@@ -55,12 +55,12 @@ button{
 
 .dropdown-subtrigger[data-state='open'] {
     background-color:var(--dropdownSubTriggerColor);
-    color: var(--headerColor);
+    color: #1D1D3A;
 }
 
 
 .dropdown-subtrigger:hover, .dropdown-item:hover{
-    color: var(--textColor);
+    color: var(--headerTextColor);
     background-color: var(--headerColor);
 }
 
@@ -73,6 +73,7 @@ button{
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     padding-left: 0.5rem;
+    position: relative;
 }
 
 .dropdown-item-img{
@@ -82,4 +83,9 @@ button{
 .dropdown-button[data-state='open'] > *{
     animation-name: rotate;
     animation-duration: 1s;
+}
+
+.dropdown-check{
+    position: absolute;
+    right: 1rem;
 }

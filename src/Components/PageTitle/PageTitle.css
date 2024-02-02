@@ -1,0 +1,39 @@
+.pagetitle-container{
+    display: flex;
+    flex-direction: column;
+    margin-left: 2rem;
+    margin-top: 2rem;
+}
+
+.pagetitle-button{
+    display: flex;
+    width: fit-content;
+    min-width: 11rem;
+    height: 3rem;
+    border-radius: 50px;
+    /* background-color: var(--pageTitleBgcColor); */
+    background: linear-gradient(150deg, var(--pageTitleBgcColor) 0%, var(--pageTitleBgcColor2) 100%);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
+}
+.pagetitle-title, .pagetitle-text{
+    font-weight: 200;
+    font-size: 1rem;
+}
+
+.pagetitle-title{
+    color: var(--headerTextColor);
+}
+
+.pagetitle-text{
+    color: var(--textColor);
+}
+
+.pagetitle-text{
+    margin-top: 2rem;
+    width: 23rem;
+    height: auto;
+    text-wrap: wrap;
+}
