@@ -1,0 +1,13 @@
+.holdings-table{
+    border-collapse: separate;
+    border-spacing: 50px 0;
+    transform: translateX(-50px) translateY(0.5rem);
+    color: var(--textColor);
+}
+.holdings-tr{
+    transform: translateY(0.5rem);
+}
+
+.holdings-lastOrdersTitle{
+    color: var(--textColor);
+}

@@ -9,14 +9,15 @@ import PT from '../../Assets/Images/br.png'
 import './Settings.css'
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import CheckSvg from '../../Assets/Svg/Check-svg';
+import { ThemeContext } from '../../Contexts/ThemeContext';
 
 export default function Settings(){
 
     const [themeDefinition, setThemeDefinition] = useState(localStorage.getItem('@theme'))
     const [langDefinition, setLangDefinition] = useState(localStorage.getItem('@language'))
-    // var themeDefinition = localStorage.getItem('@theme')
+    const { ThemeColor, changeProviderTheme } = useContext(ThemeContext)
 
     const {t} = useTranslation()
 
@@ -50,6 +51,14 @@ export default function Settings(){
             setThemeDefinition(theme)
         }
 
+        if(theme == 'dark'){
+            changeProviderTheme('#194AFE')
+        }
+
+        if(theme == 'light'){
+            changeProviderTheme('#8E66D1')
+        }
+
         if (theme === 'system'){
             localStorage.setItem('@theme', theme)
             setThemeDefinition(theme)
@@ -66,20 +75,22 @@ export default function Settings(){
 
         if(theme == 'darkS'){
             theme = 'dark'
+            changeProviderTheme('#194AFE')
         }
 
         if(theme == 'lightS'){
             theme = 'light'
+            changeProviderTheme('#8E66D1')
         }
 
         document.querySelector('body')?.setAttribute('data-theme', theme)
     }
 
     return(
-        <div >
+        <div>
             <DropdownMenu.Root >
                 <DropdownMenu.Trigger asChild>
-                    <button className='dropdown-button'  >
+                    <button className='dropdown-button' >
                         <SettingsSvg />
                     </button>
                 </DropdownMenu.Trigger>
