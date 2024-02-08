@@ -3,6 +3,7 @@
     flex-direction: column;
     margin-left: 2rem;
     margin-top: 2rem;
+    width: fit-content;
 }
 
 .pagetitle-button{

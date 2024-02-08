@@ -1,4 +1,11 @@
 .holdinds-financialStats-text{
     color: var(--textColor);
     font-weight: 200;
+    margin:0px;
+}
+
+.holdinds-financialStats{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }

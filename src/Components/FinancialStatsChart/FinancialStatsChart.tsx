@@ -1,12 +1,13 @@
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 import * as am5 from "@amcharts/amcharts5";
 import * as am5xy from "@amcharts/amcharts5/xy";
-import { useContext, useEffect, useLayoutEffect, useState } from "react";
+import { useContext, useLayoutEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { ThemeContext } from "../../Contexts/ThemeContext";
 import './FinancialStatsChart.css'
+import getProfit from "../../Utils/Functions/getProfit";
 
-export default function FinancialStatsChart() {
+export default function FinancialStatsChart(props:{selectedYear:string}) {
     const { ThemeColor } = useContext(ThemeContext);
     const {t} = useTranslation()
     function getTextColor() {
@@ -29,6 +30,7 @@ export default function FinancialStatsChart() {
         }
     }
 
+    //Graph constructor
     useLayoutEffect(() => {
         /* Chart code */
 
@@ -182,12 +184,11 @@ export default function FinancialStatsChart() {
         };
     }, [ThemeColor]);
 
-
     return (
         <>
             <div className="holdinds-financialStats">
                 <h1 className="holdinds-financialStats-text">{t('carteira.estatisticas')}</h1>
-                <h1 className="holdinds-financialStats-text">100.000</h1>
+                <h1 className="holdinds-financialStats-text">{getProfit({year: props.selectedYear}).toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}</h1>
                 <h3 className="holdinds-financialStats-text">{t('carteira.meta')} 100.000</h3>
             </div>
             <div id="chartdiv" style={{ width: "500px", height: "300px" }}></div>

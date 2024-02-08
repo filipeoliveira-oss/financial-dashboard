@@ -30,5 +30,10 @@
     "month.set":"SEP",
     "month.out":"OCT",
     "month.nov":"NOV",
-    "month.dez":"DEC"
+    "month.dez":"DEC",
+    "type.ext":"Exterior",
+    "type.rf":"Bonds",
+    "type.crypto":"Crypto",
+    "type.ind":"Index",
+    "total.alcancado": "Incoming achieved"
 }

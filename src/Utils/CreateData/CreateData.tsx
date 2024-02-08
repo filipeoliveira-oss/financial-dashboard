@@ -1,6 +1,8 @@
 const Stocks = [
-  "PETR4", "VALE3", "ITUB4", "BBDC4", "ABEV3", "B3SA3", "BBAS3", "CMIG4", "GGBR4", "LREN3", "WIN", "WDO",
-  "BTC", "ETH", "XRP"  // Adding Bitcoin, Ethereum, and Ripple as cryptocurrencies
+  "PETR4", "VALE3", "ITUB4", "BBDC4", "ABEV3", "B3SA3", "BBAS3", "CMIG4", "GGBR4", "LREN3", "WIN", "WDO", //BR Stocks
+  "BTC", "ETH", "XRP",  // Cryptocurrencies
+  "AAPL", "GOOGL", "AMZN", "MSFT", "TSLA",  // US Stocks
+  "NTNB", "LTN"  // Brazilian Bonds
 ];
 
 function getRandomTicker() {
@@ -8,7 +10,13 @@ function getRandomTicker() {
 }
 
 function getRandomProfit() {
-  return parseFloat(((Math.random() - 0.5) * 200).toFixed(2)); // Generates a random value between -100 and 100
+  // Generate a random decimal number between 0 and 1
+  const randomDecimal = Math.random();
+
+  // Scale the random decimal to be between -300 and 1000
+  const scaledDecimal = randomDecimal * (1000 - (-300)) + (-300);
+
+  return parseFloat(scaledDecimal.toFixed(2))
 }
 
 function isDayTrade(ticker:string){
@@ -20,13 +28,18 @@ function getType(ticker:string){
       return 'ind'
   }else if(ticker.toUpperCase() === 'BTC' ||ticker.toUpperCase() === 'ETH' ||ticker.toUpperCase() === 'XRP' ){
       return 'crypto'
-  }else{
-      return 'B3'
+  }else if(ticker.toUpperCase() === "AAPL"||ticker.toUpperCase() === "GOOGL"||ticker.toUpperCase() === "AMZN"||ticker.toUpperCase() === "MSFT"||ticker.toUpperCase() === "TSLA" ){
+    return 'ext'
+  }else if(ticker.toUpperCase() === "NTNB"||ticker.toUpperCase() === "LTN"){
+    return 'rf'
+  }
+  else{
+      return 'b3'
   }
 }
 
 function getRandomtimestamp(ticker:string){
-  var year = getRandomYear(2021,2023)
+  var year = getRandomYear(2021,2024)
   var month = getRandomMonth()
   var day = getRandomDay(month)
   var hour = getRandomHour(ticker)

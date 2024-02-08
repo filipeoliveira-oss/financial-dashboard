@@ -30,5 +30,10 @@
     "month.set":"SET",
     "month.out":"OUT",
     "month.nov":"NOV",
-    "month.dez":"DEZ"
+    "month.dez":"DEZ",
+    "type.ext":"Exterior",
+    "type.rf":"Renda Fixa",
+    "type.crypto":"Cripto",
+    "type.ind":"Índice",
+    "total.alcancado": "Montante Alcançado"
 }

@@ -1,4 +1,31 @@
-.holdings-FinancialStatsChart,.holdings-lastorders{
-    margin-top: 1rem;
+.holdings-container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.holdings-info-container{
+    width: fit-content;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.holdings-FinancialStatsChart,.holdings-lastorders,.holdings-pickyear{
     margin-left: 2rem;
+}
+.holdings-pickyear{
+    margin-top: 2rem;
+}
+.holdings-FinancialStatsChart{
+    margin-top: 1rem;
+}
+
+.holdings-graph-container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-self: center;
 }

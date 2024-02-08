@@ -1,0 +1,31 @@
+
+
+/* reset */
+button {
+  all: unset;
+}
+
+.ToggleGroup {
+  display: inline-flex;
+  background-color: var(--appColor);
+  border-radius: 4px;
+  /* box-shadow: 0 2px 10px blue; */
+  gap: 0.5rem;
+}
+
+.ToggleGroupItem {
+  background: linear-gradient(120deg, var(--headerColor) 0%, var(--headerColor2) 100%);
+  color: white;
+  height: 2rem;
+  width: 5rem;
+  display: flex;
+  font-size: 1rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.ToggleGroupItem[data-state=on] {
+  background: var(--selectYearBgc);
+  color: var(--selectYearText);
+}

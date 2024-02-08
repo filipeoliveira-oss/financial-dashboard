@@ -8,6 +8,7 @@
     justify-content: space-between;
     align-items: center;
     color: var(--headerTextColor);
+    z-index: 10;
 }
 
 .header-name{
