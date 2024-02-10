@@ -12,11 +12,8 @@
     flex-direction: column;
 }
 
-.holdings-FinancialStatsChart,.holdings-lastorders,.holdings-pickyear{
+.holdings-FinancialStatsChart,.holdings-lastorders{
     margin-left: 2rem;
-}
-.holdings-pickyear{
-    margin-top: 2rem;
 }
 .holdings-FinancialStatsChart{
     margin-top: 1rem;

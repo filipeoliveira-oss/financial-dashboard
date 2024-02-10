@@ -1,7 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "../Components/Header/Header";
 import Holdings from "../Pages/Holdings/Holdings";
+
 import { ThemeProvider } from "../Contexts/ThemeContext";
+import Daytrade from "../Pages/Daytrade/Daytrade";
 
 export default function AppRoutes(){
     return(
@@ -17,7 +19,7 @@ export default function AppRoutes(){
                     <Route path="/daytrade" element={
                         <div className="AppRoute">
                             <Header/>
-                            <h1 style={{color: 'white'}}>Day Trade</h1>
+                            <Daytrade/>
                         </div>
                     }/>
                     <Route path="/assets" element={

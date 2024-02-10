@@ -5,6 +5,11 @@ button {
   all: unset;
 }
 
+.pickyearContainer{
+  margin-left: 2rem;
+  margin-top: 2rem;
+}
+
 .ToggleGroup {
   display: inline-flex;
   background-color: var(--appColor);

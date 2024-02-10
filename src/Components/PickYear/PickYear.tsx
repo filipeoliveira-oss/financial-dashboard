@@ -4,7 +4,7 @@ import * as ToggleGroup from '@radix-ui/react-toggle-group';
 export default function PickYear(props:{ setSelectedYear: Function}){
 
     return(
-        <div>
+        <div className='pickyearContainer'>
             <ToggleGroup.Root
                 className="ToggleGroup"
                 type="single"
